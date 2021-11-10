@@ -1,7 +1,7 @@
 from datetime import datetime
-from ingestor import CurrencyIngestorByDate
-from writers import DataWriter
-from apis import HistoryCryptoApi
+from src.ingestor import CurrencyIngestorByDate
+from src.writers import DataWriter
+from src.apis import HistoryCryptoApi
 
 
 def get_dates_list(year):
@@ -11,7 +11,7 @@ def get_dates_list(year):
     return date_list
 
 
-if __name__ == "__main__":
+def main():
     year_summary_ingestor = CurrencyIngestorByDate(
         writer=DataWriter,
         currency="BTC",
