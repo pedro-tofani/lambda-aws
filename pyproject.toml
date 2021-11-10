@@ -11,6 +11,7 @@ python-dotenv = "^0.19.1"
 schedule = "^1.1.0"
 backoff = "^1.11.1"
 ratelimit = "^2.2.1"
+boto3 = "^1.20.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
