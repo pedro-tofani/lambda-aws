@@ -1,7 +1,7 @@
 from datetime import datetime
-from src.ingestor import CurrencyIngestorByDate
-from src.writers import DataWriter
-from src.apis import HistoryCryptoApi
+from de_project.ingestor import CurrencyIngestorByDate
+from de_project.writers import DataWriter
+from de_project.apis import HistoryCryptoApi
 
 
 def get_dates_list(year):
