@@ -9,9 +9,3 @@ repos:
     rev: 3.7.9
     hooks:
       - id: flake8
-
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.17.0
-    hooks:
-      - id: yamllint
-        args: [-c=.yamllint]
