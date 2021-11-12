@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "app_function": "de_project.lambda_function",
+    "profile_name": "phtf",
+    "project_name": "de-project",
+    "runtime": "python3.8",
+    "s3_bucket": "zappa-536ymeo4n",
+    "events": [
+      {
+        "function": "de_project.lambda_function.lambda_handler",
+        "expression": "rate(7 days)"
+      }
+    ],
+    "memory_size": 128
+  }
+}
