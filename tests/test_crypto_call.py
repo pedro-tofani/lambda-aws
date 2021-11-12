@@ -1,5 +1,5 @@
 import pytest
-from src.crypto_call import get_dates_list
+from de_project.crypto_call import get_dates_list
 from datetime import datetime
 
 

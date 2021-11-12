@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.writers import DataWriter, DataTypeNotSupportedForIngestionException
+from de_project.writers import DataWriter, DataTypeNotSupportedForIngestionException
 from unittest.mock import patch, mock_open
 
 import pytest
@@ -15,7 +15,7 @@ def writer_fixture():
 
 class TestDataWriter:
     @patch("builtins.open", new_callable=mock_open, read_data="")
-    @patch("src.writers.DataWriter.filename", return_value="file_name")
+    @patch("de_project.writers.DataWriter.filename", return_value="file_name")
     def test_write_row(self, mock_file_name, mock_open_file, writer_fixture):
         writer_fixture._write_row({"a": 1, "b": 2})
         mock_open_file.assert_called_with(mock_file_name, "a")
@@ -24,7 +24,7 @@ class TestDataWriter:
         with pytest.raises(DataTypeNotSupportedForIngestionException):
             writer_fixture.write(["test"])
 
-    @patch("src.writers.DataWriter._write_row", return_value="foobar")
+    @patch("de_project.writers.DataWriter._write_row", return_value="foobar")
     def test_write(self, mock_write_row, writer_fixture):
         response_json = {"a": 1, "b": 2}
         writer_fixture.write(response_json)

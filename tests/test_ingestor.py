@@ -1,12 +1,12 @@
 from unittest.mock import patch, call
-from src.ingestor import CurrencyIngestorByDate
-from src.apis import HistoryCryptoApi
-from src.writers import DataWriter
+from de_project.ingestor import CurrencyIngestorByDate
+from de_project.apis import HistoryCryptoApi
+from de_project.writers import DataWriter
 
 
 class TestHistoryCurrencyApi:
-    @patch("src.apis.HistoryCryptoApi.get_data", return_value="data_getted")
-    @patch("src.writers.DataWriter.write", return_value="written_data")
+    @patch("de_project.apis.HistoryCryptoApi.get_data", return_value="data_getted")
+    @patch("de_project.writers.DataWriter.write", return_value="written_data")
     def test_CurrencyIngestorByDate(self, mock_write, mock_get_data):
         ingestor = CurrencyIngestorByDate(
             writer=DataWriter,

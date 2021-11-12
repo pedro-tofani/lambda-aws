@@ -1,6 +1,6 @@
 import datetime
 
-from src.apis import HistoryCurrencyApi, HistoryCryptoApi, ResponseApi
+from de_project.apis import HistoryCurrencyApi, HistoryCryptoApi, ResponseApi
 
 import pytest
 from unittest.mock import patch
@@ -99,7 +99,7 @@ class TestHistoryCryptoApi:
 
 
 @pytest.fixture()
-@patch("src.apis.ResponseApi.__abstractmethods__", set())
+@patch("de_project.apis.ResponseApi.__abstractmethods__", set())
 def fixture_test_api():
     return ResponseApi(coin="test")
 
@@ -127,7 +127,7 @@ def mocked_requests_get(*args, **kwargs):
 class TestAPI:
     @patch("requests.get")
     @patch(
-        "src.apis.ResponseApi._get_endpoint",
+        "de_project.apis.ResponseApi._get_endpoint",
         return_value="valid_endpoint",
     )
     def test_get_data_requests_is_called(
@@ -138,11 +138,11 @@ class TestAPI:
 
     @patch("requests.get", side_effect=mocked_requests_get)
     @patch(
-        "src.apis.ResponseApi._get_endpoint",
+        "de_project.apis.ResponseApi._get_endpoint",
         return_value="valid_endpoint",
     )
     @patch(
-        "src.apis.ResponseApi._adjust_response",
+        "de_project.apis.ResponseApi._adjust_response",
         return_value={"foo": "bar"},
     )
     def test_get_data_with_valid_endpoint(
@@ -154,11 +154,11 @@ class TestAPI:
 
     @patch("requests.get", side_effect=mocked_requests_get)
     @patch(
-        "src.apis.ResponseApi._get_endpoint",
+        "de_project.apis.ResponseApi._get_endpoint",
         return_value="invalid_endpoint",
     )
     @patch(
-        "src.apis.ResponseApi._adjust_response",
+        "de_project.apis.ResponseApi._adjust_response",
         return_value={"foo": "bar"},
     )
     def test_get_data_with_invalid_endpoint(
