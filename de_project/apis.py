@@ -15,21 +15,44 @@ TOKEN = config.get("TOKEN")
 
 
 class ResponseApi(ABC):
+    """
+    [Abstract class for the differents APIs]
+    """
+
     def __init__(self, coin: str) -> None:
         self.coin = coin
 
     @abstractmethod
     def _get_endpoint(self, coin, **kwargs) -> str:
+        """[Abstrac method to return the endpoint]
+
+        Args:
+            coin ([string]): [The desired coin/currency]
+
+        Returns:
+            str: [The respective endpoint]
+        """
         pass
 
     @abstractmethod
-    def _adjust_response(self, **kwargs) -> str:
+    def _adjust_response(self, **kwargs) -> dict:
+        """[Abstrac method to adjust the API's response]
+
+        Returns:
+            dict: [The adjusted response in a dictionary]
+        """
         pass
 
     @on_exception(expo, ratelimit.exception.RateLimitException, max_tries=10)
     @ratelimit.limits(calls=60, period=60)
     @on_exception(expo, requests.exceptions.HTTPError, max_tries=10)
     def get_data(self, **kwargs) -> dict:
+        """[Method to call the API. It has some tools to handle exceptions and to avoid several API's
+            calls in a short time]
+
+        Returns:
+            dict: [data adjusted from the API]
+        """
         endpoint = self._get_endpoint(kwargs)
         logger.info(f"Getting data from endpoint: {endpoint}")
 
@@ -43,7 +66,6 @@ class ResponseApi(ABC):
 
 class HistoryCurrencyApi(ResponseApi):
     def _get_endpoint(self, date: dict) -> str:
-        print(date)
         year = date["date"].year
         month = date["date"].month
         day = date["date"].day
