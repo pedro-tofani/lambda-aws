@@ -2,14 +2,15 @@
 
 ## Introduction and project overview
 
-This project was built to practice some Data Engineering skills. First we created scripts to extract data from two different APIs. The first API is an API that returns data related to crypto coins an the second one has data related to th regulated currency we have arround the world.
+This project was built to practice some Data Engineering skills. First we created scripts to extract data from two different APIs. The first API is an API that returns data related to crypto coins an the second one has data related to regulated currency we have around the world.
 The project was designed in an OOP paradigm and we can easilly choose the way we do the extraction. We can choose witch API we want to use, how we are calling it and where we want to save the data (locally or in the cloud). Here we have an explanation of all the files and classes referred at this project.
 
 ![alt text](project-design.png)
 
 * scripts: the script that we can use to choose the ingestor we are using with it's parameters.
+
 * ingestor.py: the ingestors classes. Actually has two classes, one abstract and other concrete. If we need ant other ingestor we can create another class and add it to the ingestor.py file.
-    * DataIngestor: abstract class. Needs the writer, the api, the urrency and the date list.
+    * DataIngestor: abstract class. Needs the writer, the api, the currency and the date list.
     * CurrencyIngestorByDate: concrete class, implements the ingest method.
 
 * api.py: the API's classes. Actually has three classes, one abstract and two concretes. As in the ingestor classes, if we need another API endpoint we can create another class and add it to the api.py file.
@@ -24,6 +25,7 @@ The project was designed in an OOP paradigm and we can easilly choose the way we
 There is already two scripts that can be runned to make the API extraction, locally or in the cloud.
 
 Finally a lambda function script was created. The script is used to extract the data from the API using cloud computation and save it into S3. This lambda function can be automatically deployed with the zappa settings configured in zappa_settings.json.
+
 ![lambda_function](lambda_function.png)
 
 
