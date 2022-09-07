@@ -26,7 +26,7 @@ There is already two scripts that can be runned to make the API extraction, loca
 
 Finally a lambda function script was created. The script is used to extract the data from the API using cloud computation and save it into S3. This lambda function can be automatically deployed with the zappa settings configured in zappa_settings.json.
 
-![lambda_function](lambda_function.png)
+![lambda_function](lambda_function_diagram.png)
 
 
 ## Tecnologies and tools used
